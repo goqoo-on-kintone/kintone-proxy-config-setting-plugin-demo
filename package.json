@@ -1,0 +1,43 @@
+{
+  "name": "kintone-proxy-config-setting-plugin-demo",
+  "description": "",
+  "scripts": {
+    "start": "goqoo start",
+    "s": "goqoo s",
+    "build": "goqoo build",
+    "watch": "goqoo watch",
+    "build:s3": "goqoo build -- --env S3",
+    "watch:s3": "goqoo watch -- --env S3",
+    "release": "NODE_ENV=production goqoo release",
+    "release:s3": "NODE_ENV=staging goqoo release -- --env S3",
+    "generate": "goqoo generate",
+    "g": "goqoo g",
+    "test": "jest",
+    "prettier": "prettier --write \"src/**/*.{js,ts,jsx,tsx,vue,json}\"",
+    "eslint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx,vue}\"",
+    "preinstall": "typesync || true"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@types/eslint": "^7.28.0",
+    "@types/jest": "^27.0.3",
+    "@types/luxon": "^1.27.1",
+    "@types/prettier": "^2.3.2",
+    "babel-jest": "^27.4.5",
+    "eslint": "^8.4.0",
+    "eslint-config-goqoo": "^1.0.0",
+    "jest": "^27.4.5",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.1.2",
+    "typesync": "^0.11.1"
+  },
+  "dependencies": {
+    "@holiday-jp/holiday_jp": "^2.3.0",
+    "@kintone/rest-api-client": "^2.0.15",
+    "goqoo": "^1.3.0-beta011",
+    "kintone-ui-component": "^1.0.4",
+    "luxon": "^2.0.1",
+    "sweetalert": "^2.1.2"
+  }
+}
