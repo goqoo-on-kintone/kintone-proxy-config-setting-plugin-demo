@@ -14,6 +14,7 @@ export type ProxyConfigPlugin = {
   kintone: {
     recordsGet: ProxyConfig
     recordPut: ProxyConfig
+    commentPost: ProxyConfig
   }
 }
 
