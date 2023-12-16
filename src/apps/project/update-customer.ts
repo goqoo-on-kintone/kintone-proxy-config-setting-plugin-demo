@@ -59,7 +59,8 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
   try {
     // 顧客管理レコードを取得
     const customerQuery = `$id="${customerRecordId}"`
-    const customerParams = `?app=${appId.customer}&query=${encodeURIComponent(customerQuery)}`
+    const customerFields = ['$id', '部署名', '担当者名'].map((fieldCode, i) => `fields[${i}]=${fieldCode}`).join('&')
+    const customerParams = `?app=${appId.customer}&query=${encodeURIComponent(customerQuery)}&${customerFields}`
     const customerPromise = fetchViaPluginProxy<KintoneApiResponse<CustomerRecord>>({
       pluginId: context.externalApi.proxyConfigPluginId,
       url: context.externalApi.kintone.recordsGet.url + customerParams,
@@ -68,7 +69,8 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
 
     // 活動履歴レコードを取得
     const salesActivityQuery = `顧客管理レコード番号_関連レコード一覧紐付け用="${customerRecordId}"`
-    const salesActivityParams = `?app=${appId.salesActivity}&query=${encodeURIComponent(salesActivityQuery)}`
+    const salesActivityFields = ['$id', '対応者'].map((fieldCode, i) => `fields[${i}]=${fieldCode}`).join('&')
+    const salesActivityParams = `?app=${appId.salesActivity}&query=${encodeURIComponent(salesActivityQuery)}&${salesActivityFields}`
     const salesActivityPromise = fetchViaPluginProxy<KintoneApiResponse<SalesActivityRecord>>({
       pluginId: context.externalApi.proxyConfigPluginId,
       url: context.externalApi.kintone.recordsGet.url + salesActivityParams,
@@ -98,7 +100,7 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
       headers: { 'Content-Type': 'application/json' },
       body: {
         app: appId.customer,
-        id: customerRecord.$id.value,
+        id: customerRecordId,
         record: {
           部署名: { value: deptName },
           担当者名: { value: contactName },
