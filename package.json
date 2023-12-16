@@ -12,7 +12,6 @@
     "release:s3": "NODE_ENV=staging goqoo release -- --env S3",
     "generate": "goqoo generate",
     "g": "goqoo g",
-    "test": "jest",
     "prettier": "prettier --write \"src/**/*.{js,ts,jsx,tsx,vue,json}\"",
     "eslint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx,vue}\"",
     "preinstall": "typesync || true"
@@ -21,15 +20,11 @@
   "private": true,
   "devDependencies": {
     "@types/eslint": "^7.28.0",
-    "@types/jest": "^27.0.3",
     "@types/luxon": "^1.27.1",
     "@types/prettier": "^2.3.2",
-    "babel-jest": "^27.4.5",
     "eslint": "^8.4.0",
     "eslint-config-goqoo": "^1.0.0",
-    "jest": "^27.4.5",
     "prettier": "^2.3.2",
-    "ts-jest": "^27.1.2",
     "typesync": "^0.11.1"
   },
   "dependencies": {
