@@ -93,7 +93,7 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
 
   // 部署名・担当者名に変更があれば、顧客管理レコードを更新する
   try {
-    await fetchViaPluginProxy<KintoneApiResponse<CustomerRecord>>({
+    await fetchViaPluginProxy({
       pluginId: context.externalApi.proxyConfigPluginId,
       url: context.externalApi.kintone.recordPut.url,
       method: context.externalApi.kintone.recordPut.method,
@@ -118,7 +118,7 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
   // さらに活動履歴アプリにもコメントを投稿する（複数レコードあれば全て）
   try {
     for (const salesActivityRecord of salesActivityRecords) {
-      await fetchViaPluginProxy<KintoneApiResponse<CustomerRecord>>({
+      await fetchViaPluginProxy({
         pluginId: context.externalApi.proxyConfigPluginId,
         url: context.externalApi.kintone.commentPost.url,
         method: context.externalApi.kintone.commentPost.method,
