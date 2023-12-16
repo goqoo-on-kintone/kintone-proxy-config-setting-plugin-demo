@@ -95,16 +95,20 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
   try {
     await fetchViaPluginProxy({
       pluginId: context.externalApi.proxyConfigPluginId,
-      url: context.externalApi.kintone.recordPut.url,
-      method: context.externalApi.kintone.recordPut.method,
+      url: context.externalApi.kintone.recordsPut.url,
+      method: context.externalApi.kintone.recordsPut.method,
       headers: { 'Content-Type': 'application/json' },
       body: {
         app: appId.customer,
-        id: customerRecordId,
-        record: {
-          部署名: { value: deptName },
-          担当者名: { value: contactName },
-        },
+        records: [
+          {
+            id: customerRecordId,
+            record: {
+              部署名: { value: deptName },
+              担当者名: { value: contactName },
+            },
+          },
+        ],
       },
     })
     alert('部署名または担当者名が変更されたので、顧客管理レコードも同時に更新しました。')

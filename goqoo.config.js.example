@@ -26,8 +26,8 @@ const config = {
             url: 'https://example.cybozu.com/k/v1/records.json',
             method: 'GET',
           },
-          recordPut: {
-            url: 'https://example.cybozu.com/k/v1/record.json',
+          recordsPut: {
+            url: 'https://example.cybozu.com/k/v1/records.json',
             method: 'PUT',
           },
           commentPost: {
