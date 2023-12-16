@@ -5,7 +5,6 @@ type CustomerRecord = kintone.types.SavedCustomerFields
 type ProjectRecord = kintone.types.SavedProjectFields
 type SalesActivityRecord = kintone.types.SavedSalesActivityFields
 type KintoneProxyResponse = [string, number, Record<string, string>]
-type KintoneApiResponse<T> = { records: T[] }
 
 // PluginProxy経由で任意のAPIリクエストをする関数
 const fetchViaPluginProxy = async <T>({
@@ -58,20 +57,18 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
 
   try {
     // 顧客管理レコードを取得
-    const customerQuery = `$id="${customerRecordId}"`
-    const customerFields = ['$id', '部署名', '担当者名'].map((fieldCode, i) => `fields[${i}]=${fieldCode}`).join('&')
-    const customerParams = `?app=${appId.customer}&query=${encodeURIComponent(customerQuery)}&${customerFields}`
-    const customerPromise = fetchViaPluginProxy<KintoneApiResponse<CustomerRecord>>({
+    const customerParams = `?app=${appId.customer}&id=${customerRecordId}`
+    const customerPromise = fetchViaPluginProxy<{ record: CustomerRecord }>({
       pluginId: context.externalApi.proxyConfigPluginId,
-      url: context.externalApi.kintone.recordsGet.url + customerParams,
-      method: context.externalApi.kintone.recordsGet.method,
-    }).then((res) => res.records[0])
+      url: context.externalApi.kintone.recordGet.url + customerParams,
+      method: context.externalApi.kintone.recordGet.method,
+    }).then((res) => res.record)
 
     // 活動履歴レコードを取得
     const salesActivityQuery = `顧客管理レコード番号_関連レコード一覧紐付け用="${customerRecordId}"`
     const salesActivityFields = ['$id', '対応者'].map((fieldCode, i) => `fields[${i}]=${fieldCode}`).join('&')
     const salesActivityParams = `?app=${appId.salesActivity}&query=${encodeURIComponent(salesActivityQuery)}&${salesActivityFields}`
-    const salesActivityPromise = fetchViaPluginProxy<KintoneApiResponse<SalesActivityRecord>>({
+    const salesActivityPromise = fetchViaPluginProxy<{ records: SalesActivityRecord[] }>({
       pluginId: context.externalApi.proxyConfigPluginId,
       url: context.externalApi.kintone.recordsGet.url + salesActivityParams,
       method: context.externalApi.kintone.recordsGet.method,
