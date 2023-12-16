@@ -14,6 +14,7 @@ const config = {
       host: 'example.cybozu.com',
       auth: { type: 'password' },
       appId: {
+        auto_number: 0,
         project: 1,
         customer: 2,
         sales_activity: 3,
