@@ -1,6 +1,16 @@
 # kintone-proxy-config-setting-plugin-demo
 
-## Usage
+kintone アドベントカレンダー2023の記事  
+[kintoneプラグインにAPIトークンを秘匿して、JSカスタマイズから利用する](https://qiita.com/the_red/private/fe166efaf98ce165c411)  
+のサンプルプロジェクトです。
+
+## サンプルその1: 自動採番
+
+* [auto-number-danger.js](/src/apps/auto-number-danger.js)
+* [auto-number.js](/src/apps/auto-number.js)
+
+## サンプルその2: 別アプリの参照・更新・コメント書き込み
+
 
 ### Install
 
