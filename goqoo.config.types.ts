@@ -13,7 +13,6 @@ type ProxyConfig = { url: string; method: 'GET' | 'POST' | 'PUT' | 'DELETE' }
 export type ProxyConfigPlugin = {
   proxyConfigPluginId: string
   kintone: {
-    recordGet: ProxyConfig
     recordsGet: ProxyConfig
     recordPut: ProxyConfig
     commentPost: ProxyConfig
