@@ -133,9 +133,10 @@ kintone.events.on(['app.record.create.submit.success', 'app.record.edit.submit.s
         },
       })
     }
+    alert('活動履歴アプリにレコードコメントを投稿しました。')
   } catch (e) {
     console.error(e)
-    alert(`活動履歴アプリへのコメント投稿に失敗しました。`)
+    alert('活動履歴アプリへのコメント投稿に失敗しました。')
     return
   }
 })
