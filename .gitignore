@@ -1,6 +1,7 @@
 # Goqoo
 dist/
 tmp/
+goqoo.config.js
 
 # Logs
 logs
