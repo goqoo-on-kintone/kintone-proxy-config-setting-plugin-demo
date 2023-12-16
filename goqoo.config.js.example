@@ -7,28 +7,31 @@ const config = {
   bundlerType: 'default',
   dtsGen: {
     env: 'development',
-    // skip: ['customer'],
   },
   environments: [
     {
       env: 'development',
       host: 'example.cybozu.com',
+      auth: { type: 'password' },
       appId: {
-        project: 0,
-        customer: 0,
-        sales_activity: 0,
+        project: 1,
+        customer: 2,
+        sales_activity: 3,
+      },
+      externalApi: {
+        proxyConfigPluginId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        kintone: {
+          recordsGet: {
+            url: 'https://example.cybozu.com/k/v1/records.json',
+            method: 'GET',
+          },
+          recordPut: {
+            url: 'https://example.cybozu.com/k/v1/record.json',
+            method: 'PUT',
+          },
+        },
       },
     },
-    // {
-    //   env: 'staging',
-    //   host: '...',
-    //   appId: { ... },
-    // },
-    // {
-    //   env: 'production',
-    //   host: '...',
-    //   appId: { ... },
-    // },
   ],
 }
 module.exports = config
