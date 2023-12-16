@@ -35,7 +35,7 @@
   "dependencies": {
     "@holiday-jp/holiday_jp": "^2.3.0",
     "@kintone/rest-api-client": "^2.0.15",
-    "goqoo": "^1.3.0-beta011",
+    "goqoo": "^1.3.0-beta012",
     "kintone-ui-component": "^1.0.4",
     "luxon": "^2.0.1",
     "sweetalert": "^2.1.2"
