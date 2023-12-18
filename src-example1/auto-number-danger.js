@@ -27,6 +27,7 @@
       const record = await fetchViaProxy({
         url: 'https://example.cybozu.com/k/v1/records.json' + params,
         method: 'GET',
+        // ❗❗❗❗❗ここに直接APIトークンを書いてしまうのはセキュリティ的に危険↓❗❗❗❗❗
         headers: { 'X-Cybozu-API-Token': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
       }).then((res) => res.records[0])
 
